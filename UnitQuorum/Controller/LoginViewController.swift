@@ -47,10 +47,7 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+ 
  
 
     @IBAction func webLoginButtonTapped(_ sender: UIButton) {
@@ -75,14 +72,15 @@ class LoginViewController: UIViewController {
             }
             Client.sharedInstance.isSignedIn = true
  
-            var oauthToken = NSURLComponents(string: (successURL.absoluteString))?.queryItems?.filter({$0.name == "code"}).first
+            var oauthCode = NSURLComponents(string: (successURL.absoluteString))?.queryItems?.filter({$0.name == "code"}).first
             
             // Do what you now that you've got the token, or use the callBack URL
            // print("here is your token : -----------------")
            // print(oauthToken ?? "No OAuth Token")
             
-            guard let code = oauthToken?.value else {
+            guard let code = oauthCode?.value else {
                 print("No code received")
+                self.callErrorWithCustomMessage(message : "No code received")
                 return;
             }
             self.code = code
@@ -162,6 +160,11 @@ class LoginViewController: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier : "WebViewController") as! WebViewController
         print("vc created")
         return vc
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
 }

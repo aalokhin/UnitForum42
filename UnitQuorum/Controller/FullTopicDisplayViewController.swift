@@ -6,27 +6,34 @@
 //  Copyright © 2019 Anastasiia ALOKHINA. All rights reserved.
 //
 
+/*
+     GET /v2/messages/graph(/on/:field(/by/:interval))
+     GET /v2/topics/:topic_id/messages/:message_id/messages
+     GET /v2/topics/:topic_id/messages
+     https://api.intra.42.fr/apidoc/2.0/topics/show.html
+     GET /v2/me
+*/
+
+
+/*
+ let json :  [NSDictionary] = (try JSONSerialization.jsonObject(with: data, options: []) as? [NSDictionary])!
+ print(json)
+ */
+
 import Foundation
 import UIKit
 import WebKit
 
-
-
 class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
-   // var topic : TopicJSON
+    @IBOutlet weak var responseTextField: UITextField!
     var topicID : Int = -1
     var messages : [MessageJSON] = []
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loginLbl: UILabel!
-    
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var topicTextLbl: UILabel!
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         print("hello from dispaly topic")
@@ -34,62 +41,27 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
         //print(topic.author.login)
         //print(topic.name)
         getMessages()
-        
-        
     }
-        
-        
-        //  GET /v2/messages/graph(/on/:field(/by/:interval))
-      //  GET /v2/topics/:topic_id/messages/:message_id/messages
-       // GET /v2/topics/:topic_id/messages    }
-        
-        //https://api.intra.42.fr/apidoc/2.0/topics/show.html
-        
-        
-        func getMessages()
-        {
-            let urlPath: String = "https://api.intra.42.fr/v2/topics/\(topicID)/messages"
-            let url = URL(string: urlPath)
-            let request : NSMutableURLRequest = NSMutableURLRequest(url: url!)
-            request.httpMethod = "GET"
-            request.setValue("Bearer " + Client.sharedInstance.token, forHTTPHeaderField: "Authorization")
-            
-            let session = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
-                if let response = response {
-                    print("response received")
-          
-                   // print(response)
-                }
-                guard let data = data else {
-                    //  print("no data received")
-                    return
-                }
-                print(data)
-                do {
-                    
-                      let json :  [NSDictionary] = (try JSONSerialization.jsonObject(with: data, options: []) as? [NSDictionary])!
-                    //print(json)
-//
-                    self.parseMessages(d : data)
-                    
-                    
-                }
-                catch {
-                    print(error)
-                    print("error in get_messages")
-                }
-                //                DispatchQueue.main.async {
-                //                    self.parseTopic(d : data)
-                //
-                //                }
+
+    func getMessages() {
+        let urlPath: String = "https://api.intra.42.fr/v2/topics/\(topicID)/messages"
+        let url = URL(string: urlPath)
+        let request : NSMutableURLRequest = NSMutableURLRequest(url: url!)
+        request.httpMethod = "GET"
+        request.setValue("Bearer " + Client.sharedInstance.token, forHTTPHeaderField: "Authorization")
+        let session = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
+            guard let _ = response,  let data = data else {
+                print("response received")
+                return
             }
-            session.resume()
+            self.parseMessages(d : data)
         }
+        session.resume()
+    }
     
     func parseMessages(d : Data!)
     {
         let decoder = JSONDecoder()
-        
         let m = try! decoder.decode([MessageJSON].self, from: d)
         for msg in m
         {
@@ -104,46 +76,60 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
                     self.topicTextLbl.sizeToFit()
                 }
             }
-            
             messages.append(msg)
+/*
             if (msg.replies?.count != 0)
             {
                 print("Message has replies")
                 if let replies = msg.replies{
-                    for reply in replies
-                    {
-                        
+                    for reply in replies{
                         print(reply.content)
-                        
                     }
                 }
             }
+*/
             print("is it a main topic?? \(msg.is_root)")
-//            print("msg ID : \(msg.id)")
-//            print("Created at: \(msg.created_at)")
-//            print("Updated at: \(msg.updated_at)")
-//            print("msg cont: \(msg.content)")
-//            print("Author name: \(msg.author.login)")
         }
-        
         print("total number of messages  in topic ===========> \(messages.count)")
-//        if (!messages.isEmpty){
-//            //loginLbl.text = messages[]
-//        }
-//
+        
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
         
-        
-        
-//        DispatchQueue.main.async {
-//            self.reloadData()
-//        }
+    }
+
+    @IBAction func SendResponseClicked(_ sender: UIButton) {
+       if (!responseTextField.text!.isEmpty){
+            guard let text = responseTextField.text else {
+                print("spmething went wrong in response sending ")
+                return
+            }
+            responseTextField.text = nil
+            let responseToMessage : String = text.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+            let sendResponseURL = "https://api.intra.42.fr/v2/topics/\(topicID)/messages?message[author_id]=\(Client.sharedInstance.myId)&message[content]=\(responseToMessage)"
+            print(sendResponseURL)
+            let urlSend = URL(string : sendResponseURL)
+            var request = URLRequest(url : urlSend!)
+            //var request = URLRequest(url : URL(string : sendResponseURL)!)
+            request.setValue("Bearer \(Client.sharedInstance.token)", forHTTPHeaderField: "Authorization")
+            request.httpMethod = "POST"
+            print(request)
+            let session = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
+                guard let _ = response, let _ = data else {
+                    print("no response / data received")
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+            session.resume()
+        } else {
+            print("can't send empty response")
+        }
     }
     
-   
-   //  GET /v2/me
+    
     
 }
 
@@ -151,55 +137,56 @@ extension FullTopicDisplayViewController {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return messages.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessagesCell", for: indexPath) as? MessageCell
         cell?.backgroundColor = .red
-        
         let message = messages[indexPath.row]
         cell?.contMsgLbl.text = message.content
         cell?.dateMsgLbl.text = message.created_at
         cell?.xolginMsgLbl.text = message.author.login
-        //cell?.replNbrLbl.text =
         cell?.replNbrLbl.text = "Replies: " + (message.replies?.count.toString())!
-        
-        
-        
-        
-        //cell.textLabel?.text = message.content
-        //cell.textLabel?.text = "Message has replies: \(message.replies?.count)"
-        
-        
-//        let topic = topics[indexPath.row]
-//        cell.authorLbl.text = topic.author.login
-//        cell.dateLbl.text = topic.created_at.toDate()?.toString()
-//        cell.topicLbl.text = topic.name
-//        cell.designSelf()
-        //cell.activityIndicator.startAnimating()
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(indexPath)")
-        
         let storyboard = UIStoryboard.init(name: "RepliesToMessages", bundle: nil)
-        
         let vc = storyboard.instantiateViewController(withIdentifier : "RepliesToMessagesVC") as! RepliesToMessagesVC
-        
-        //vc.message = messages[indexPath.row]
         vc.replies =  messages[indexPath.row].replies!
         vc.messageText = messages[indexPath.row].content
-
-//        vc.topicID = self.topics[indexPath.row].id
         self.navigationController?.pushViewController(vc, animated: true)
     }
+
     
-   
+}
+
+
+
+extension FullTopicDisplayViewController : UITextFieldDelegate{
     
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        /*
+         if let input = textField.text{
+            setToken(searchStr : input)
+        }
+        */
+        print("here textFieldShouldReturn")
+        textField.text = nil
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = 200
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
+    }
 }
 
 extension Int{
@@ -210,6 +197,8 @@ extension Int{
         return myString
     }
 }
+
+
 /*
 
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
