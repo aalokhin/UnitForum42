@@ -12,7 +12,13 @@ import UIKit
 
 
 class MessageCell : UITableViewCell{
-
+    
+    @IBOutlet weak var dateMsgLbl: UILabel!
+    
+    @IBOutlet weak var xolginMsgLbl: UILabel!
+    
+    @IBOutlet weak var replNbrLbl: UILabel!
+    @IBOutlet weak var contMsgLbl: UILabel!
 }
 
 //

@@ -157,10 +157,19 @@ extension FullTopicDisplayViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessagesCell", for: indexPath)
-        cell.backgroundColor = .red
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessagesCell", for: indexPath) as? MessageCell
+        cell?.backgroundColor = .red
         
         let message = messages[indexPath.row]
+        cell?.contMsgLbl.text = message.content
+        cell?.dateMsgLbl.text = message.created_at
+        cell?.xolginMsgLbl.text = message.author.login
+        //cell?.replNbrLbl.text =
+        cell?.replNbrLbl.text = "Replies: " + (message.replies?.count.toString())!
+        
+        
+        
+        
         //cell.textLabel?.text = message.content
         //cell.textLabel?.text = "Message has replies: \(message.replies?.count)"
         
@@ -171,7 +180,7 @@ extension FullTopicDisplayViewController {
 //        cell.topicLbl.text = topic.name
 //        cell.designSelf()
         //cell.activityIndicator.startAnimating()
-        return cell
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -191,6 +200,15 @@ extension FullTopicDisplayViewController {
     
    
     
+}
+
+extension Int{
+    
+    func toString() -> String
+    {
+        let myString = String(self)
+        return myString
+    }
 }
 /*
 
