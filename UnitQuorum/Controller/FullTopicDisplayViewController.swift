@@ -106,6 +106,18 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
             }
             
             messages.append(msg)
+            if (msg.replies?.count != 0)
+            {
+                print("Message has replies")
+                if let replies = msg.replies{
+                    for reply in replies
+                    {
+                        
+                        print(reply.content)
+                        
+                    }
+                }
+            }
             print("is it a main topic?? \(msg.is_root)")
 //            print("msg ID : \(msg.id)")
 //            print("Created at: \(msg.created_at)")
@@ -149,8 +161,8 @@ extension FullTopicDisplayViewController {
         cell.backgroundColor = .red
         
         let message = messages[indexPath.row]
-        cell.textLabel?.text = message.content
-        
+        //cell.textLabel?.text = message.content
+        //cell.textLabel?.text = "Message has replies: \(message.replies?.count)"
         
         
 //        let topic = topics[indexPath.row]

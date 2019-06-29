@@ -46,12 +46,24 @@
                                             <constraint firstAttribute="height" constant="320" id="IUr-b3-U4O"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessagesCell" id="5O5-LW-oeG">
-                                                <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessagesCell" rowHeight="113" id="5O5-LW-oeG" customClass="MessageCell" customModule="UnitQuorum" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="343" height="113"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5O5-LW-oeG" id="iNH-2O-uZl">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="112.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iqt-O8-UmE">
+                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="112.5"/>
+                                                            <state key="normal" title="View Replies"/>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="Iqt-O8-UmE" firstAttribute="leading" secondItem="iNH-2O-uZl" secondAttribute="leading" id="Khd-tt-dNU"/>
+                                                        <constraint firstItem="Iqt-O8-UmE" firstAttribute="top" secondItem="iNH-2O-uZl" secondAttribute="top" id="SQQ-Lx-3QP"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Iqt-O8-UmE" secondAttribute="trailing" id="eZP-bO-KXQ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Iqt-O8-UmE" secondAttribute="bottom" id="jUD-x2-gvu"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                         </prototypes>

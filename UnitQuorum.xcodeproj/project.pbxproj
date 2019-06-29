@@ -19,6 +19,7 @@
 		EF533DA322C7B0CA00DBC517 /* ListTopics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF533DA222C7B0CA00DBC517 /* ListTopics.storyboard */; };
 		EF533DA522C7B11800DBC517 /* ListTopicsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF533DA422C7B11800DBC517 /* ListTopicsVC.swift */; };
 		EF533DA722C7B35F00DBC517 /* ListTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF533DA622C7B35F00DBC517 /* ListTopicCell.swift */; };
+		EF533DA922C7C75E00DBC517 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF533DA822C7C75E00DBC517 /* MessageCell.swift */; };
 		EF71E71D22B66A7500A09FC1 /* MessageJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71E71C22B66A7500A09FC1 /* MessageJSON.swift */; };
 		EF8B1CF222B5471A006200C8 /* FullTopicDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B1CF122B5471A006200C8 /* FullTopicDisplayViewController.swift */; };
 		EF8B1CF422B548A9006200C8 /* FullTopicStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF8B1CF322B548A9006200C8 /* FullTopicStoryboard.storyboard */; };
@@ -52,6 +53,7 @@
 		EF533DA222C7B0CA00DBC517 /* ListTopics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListTopics.storyboard; sourceTree = "<group>"; };
 		EF533DA422C7B11800DBC517 /* ListTopicsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTopicsVC.swift; sourceTree = "<group>"; };
 		EF533DA622C7B35F00DBC517 /* ListTopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTopicCell.swift; sourceTree = "<group>"; };
+		EF533DA822C7C75E00DBC517 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		EF71E71C22B66A7500A09FC1 /* MessageJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageJSON.swift; sourceTree = "<group>"; };
 		EF8B1CF122B5471A006200C8 /* FullTopicDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullTopicDisplayViewController.swift; sourceTree = "<group>"; };
 		EF8B1CF322B548A9006200C8 /* FullTopicStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullTopicStoryboard.storyboard; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				EFD61BC722A2B68B00A62180 /* TopicCell.swift */,
 				EF533DA622C7B35F00DBC517 /* ListTopicCell.swift */,
+				EF533DA822C7C75E00DBC517 /* MessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				EF8B1CF222B5471A006200C8 /* FullTopicDisplayViewController.swift in Sources */,
 				5D1960C32295610400964AF0 /* LoginViewController.swift in Sources */,
 				EF533DA722C7B35F00DBC517 /* ListTopicCell.swift in Sources */,
+				EF533DA922C7C75E00DBC517 /* MessageCell.swift in Sources */,
 				EFF974B122944CF0006EE8C6 /* AppDelegate.swift in Sources */,
 				EFD61BC822A2B68B00A62180 /* TopicCell.swift in Sources */,
 				EF533DA522C7B11800DBC517 /* ListTopicsVC.swift in Sources */,
