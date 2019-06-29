@@ -149,11 +149,10 @@ class LoginViewController: UIViewController {
     
     
 
-    func getTopicsViewController() -> UITableViewController {
-        let storyboard = UIStoryboard.init(name: "Topics", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier : "TopicsViewController") as! TopicsViewController
+    func getTopicsViewController() -> UIViewController {
+        let storyboard = UIStoryboard.init(name: "ListTopics", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier : "ListTopicsVC") as! ListTopicsVC
         print("vc created")
-    
         return vc
     }
     

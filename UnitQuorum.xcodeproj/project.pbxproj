@@ -16,6 +16,9 @@
 		5D1D1FED22B7A82C001FE715 /* CreateNewTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1D1FEC22B7A82C001FE715 /* CreateNewTopicViewController.swift */; };
 		5D1D1FEF22B7CE3D001FE715 /* TopicPostJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1D1FEE22B7CE3D001FE715 /* TopicPostJSON.swift */; };
 		5DAF8F4622B8DEBD00263B12 /* MeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF8F4522B8DEBD00263B12 /* MeJSON.swift */; };
+		EF533DA322C7B0CA00DBC517 /* ListTopics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF533DA222C7B0CA00DBC517 /* ListTopics.storyboard */; };
+		EF533DA522C7B11800DBC517 /* ListTopicsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF533DA422C7B11800DBC517 /* ListTopicsVC.swift */; };
+		EF533DA722C7B35F00DBC517 /* ListTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF533DA622C7B35F00DBC517 /* ListTopicCell.swift */; };
 		EF71E71D22B66A7500A09FC1 /* MessageJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71E71C22B66A7500A09FC1 /* MessageJSON.swift */; };
 		EF8B1CF222B5471A006200C8 /* FullTopicDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B1CF122B5471A006200C8 /* FullTopicDisplayViewController.swift */; };
 		EF8B1CF422B548A9006200C8 /* FullTopicStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF8B1CF322B548A9006200C8 /* FullTopicStoryboard.storyboard */; };
@@ -46,6 +49,9 @@
 		5D1D1FEC22B7A82C001FE715 /* CreateNewTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTopicViewController.swift; sourceTree = "<group>"; };
 		5D1D1FEE22B7CE3D001FE715 /* TopicPostJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicPostJSON.swift; sourceTree = "<group>"; };
 		5DAF8F4522B8DEBD00263B12 /* MeJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeJSON.swift; sourceTree = "<group>"; };
+		EF533DA222C7B0CA00DBC517 /* ListTopics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListTopics.storyboard; sourceTree = "<group>"; };
+		EF533DA422C7B11800DBC517 /* ListTopicsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTopicsVC.swift; sourceTree = "<group>"; };
+		EF533DA622C7B35F00DBC517 /* ListTopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTopicCell.swift; sourceTree = "<group>"; };
 		EF71E71C22B66A7500A09FC1 /* MessageJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageJSON.swift; sourceTree = "<group>"; };
 		EF8B1CF122B5471A006200C8 /* FullTopicDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullTopicDisplayViewController.swift; sourceTree = "<group>"; };
 		EF8B1CF322B548A9006200C8 /* FullTopicStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullTopicStoryboard.storyboard; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				EFD61BC722A2B68B00A62180 /* TopicCell.swift */,
+				EF533DA622C7B35F00DBC517 /* ListTopicCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -100,9 +107,11 @@
 		5D1960BE2295608F00964AF0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5D1960C22295610400964AF0 /* LoginViewController.swift */,
 				EFE69AF52295A9270012204C /* WebViewDisplay.storyboard */,
 				EFE69AF72295AAFF0012204C /* WebViewController.swift */,
+				5D1960C22295610400964AF0 /* LoginViewController.swift */,
+				EF533DA222C7B0CA00DBC517 /* ListTopics.storyboard */,
+				EF533DA422C7B11800DBC517 /* ListTopicsVC.swift */,
 				EFD61BC322A2B44B00A62180 /* Topics.storyboard */,
 				EFD61BC522A2B46200A62180 /* TopicsViewController.swift */,
 				EF8B1CF322B548A9006200C8 /* FullTopicStoryboard.storyboard */,
@@ -238,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFF974BB22944CF0006EE8C6 /* LaunchScreen.storyboard in Resources */,
+				EF533DA322C7B0CA00DBC517 /* ListTopics.storyboard in Resources */,
 				EFD61BC422A2B44B00A62180 /* Topics.storyboard in Resources */,
 				EFA16AF722BF98BF0059AA96 /* MyTopics.storyboard in Resources */,
 				EFF974B822944CF0006EE8C6 /* Assets.xcassets in Resources */,
@@ -265,8 +275,10 @@
 				EFE177E222A27E10004649CD /* TokenJSON.swift in Sources */,
 				EF8B1CF222B5471A006200C8 /* FullTopicDisplayViewController.swift in Sources */,
 				5D1960C32295610400964AF0 /* LoginViewController.swift in Sources */,
+				EF533DA722C7B35F00DBC517 /* ListTopicCell.swift in Sources */,
 				EFF974B122944CF0006EE8C6 /* AppDelegate.swift in Sources */,
 				EFD61BC822A2B68B00A62180 /* TopicCell.swift in Sources */,
+				EF533DA522C7B11800DBC517 /* ListTopicsVC.swift in Sources */,
 				EFE69AF42295A5720012204C /* Client.swift in Sources */,
 				5D0DCE472297E2B900D7846C /* ErrorJSON.swift in Sources */,
 				EFD61BC622A2B46200A62180 /* TopicsViewController.swift in Sources */,
