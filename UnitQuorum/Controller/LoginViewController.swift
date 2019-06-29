@@ -233,7 +233,7 @@ extension LoginViewController{
     
     
     
-func callErrorWithCustomMessage(message : String) {
+    func callErrorWithCustomMessage(message : String) {
         
         let alert = UIAlertController(
             title : "Error",

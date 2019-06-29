@@ -12,6 +12,8 @@
      GET /v2/topics/:topic_id/messages
      https://api.intra.42.fr/apidoc/2.0/topics/show.html
      GET /v2/me
+        DELETE /v2/topics/:id
+        DELETE /v2/messages/:id
 */
 
 
@@ -62,7 +64,11 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
     func parseMessages(d : Data!)
     {
         let decoder = JSONDecoder()
-        let m = try! decoder.decode([MessageJSON].self, from: d)
+        guard let m = try? decoder.decode([MessageJSON].self, from: d) else
+        {
+            callErrorWithCustomMessage(message: "Couldn't decode the message")
+            return
+        }
         for msg in m
         {
             if(msg.is_root == true)
@@ -77,21 +83,9 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
                 }
             }
             messages.append(msg)
-/*
-            if (msg.replies?.count != 0)
-            {
-                print("Message has replies")
-                if let replies = msg.replies{
-                    for reply in replies{
-                        print(reply.content)
-                    }
-                }
-            }
-*/
-            print("is it a main topic?? \(msg.is_root)")
+            //print("is it a main topic?? \(msg.is_root)")
         }
-        print("total number of messages  in topic ===========> \(messages.count)")
-        
+        //print("total number of messages  in topic ===========> \(messages.count)")
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -110,7 +104,6 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
             print(sendResponseURL)
             let urlSend = URL(string : sendResponseURL)
             var request = URLRequest(url : urlSend!)
-            //var request = URLRequest(url : URL(string : sendResponseURL)!)
             request.setValue("Bearer \(Client.sharedInstance.token)", forHTTPHeaderField: "Authorization")
             request.httpMethod = "POST"
             print(request)
@@ -126,6 +119,7 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
             session.resume()
         } else {
             print("can't send empty response")
+            callErrorWithCustomMessage(message: "can't send empty response")
         }
     }
     
@@ -158,8 +152,61 @@ extension FullTopicDisplayViewController {
         vc.messageText = messages[indexPath.row].content
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
     
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            print("we are going to delete a note right away at \(indexPath.row) ")
+           if (messages[indexPath.row].author.id == Client.sharedInstance.myId){
+
+                let id = messages[indexPath.row].id
+                let urlPath: String = "https://api.intra.42.fr/v2/messages/\(id)"
+                let url = URL(string: urlPath)
+                let request: NSMutableURLRequest = NSMutableURLRequest(url: url!)
+                request.setValue("Bearer " + Client.sharedInstance.token, forHTTPHeaderField: "Authorization")
+                request.httpMethod = "DELETE"
+                 //DELETE /v2/messages/:id
+                let task = URLSession.shared.dataTask(with: request as URLRequest) {
+                    (data, response, error) in
+                    do {
+                        
+                        // what happens if error is not nil?
+                        // That means something went wrong.
+                        // Make sure there really is some data
+                        if let data = data {
+                            let response = try JSONSerialization.jsonObject(with: data, options: [])
+                            print(response)
+                            DispatchQueue.main.async {
+                                self.messages.remove(at: indexPath.row)
+                                tableView.deleteRows(at: [indexPath], with: .automatic)
+                                tableView.reloadData()
+                            }
+                            //completion(response)
+                        }
+                        else {
+                            // Data is nil.
+                        }
+                    } catch let error as NSError {
+                        print("json error: \(error.localizedDescription)")
+                    }
+                }
+                task.resume()
+            } else {
+                callErrorWithCustomMessage(message : "Can't delete someome else's message")
+                print("Can't delete someome else's topic")
+            }
+        }
+    }
+    
+    func callErrorWithCustomMessage(message : String) {
+        let alert = UIAlertController(
+            title : "Error",
+            message : message,
+            preferredStyle : UIAlertControllerStyle.alert);
+        alert.addAction(UIAlertAction(title: "allright, thank you", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 
@@ -168,12 +215,6 @@ extension FullTopicDisplayViewController : UITextFieldDelegate{
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        /*
-         if let input = textField.text{
-            setToken(searchStr : input)
-        }
-        */
         print("here textFieldShouldReturn")
         textField.text = nil
         textField.resignFirstResponder()
@@ -190,7 +231,6 @@ extension FullTopicDisplayViewController : UITextFieldDelegate{
 }
 
 extension Int{
-    
     func toString() -> String
     {
         let myString = String(self)
@@ -198,17 +238,3 @@ extension Int{
     }
 }
 
-
-/*
-
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTopicCell
-    let topic = topics[indexPath.row]
-    cell.authorLbl.text = topic.author.login
-    cell.dateLbl.text = topic.created_at.toDate()?.toString()
-    cell.topicLbl.text = topic.name
-    cell.designSelf()
-    //cell.activityIndicator.startAnimating()
-    return cell
-}
-*/
