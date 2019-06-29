@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1504315522C7CC6B009D413F /* RepliesToMessages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1504315422C7CC6B009D413F /* RepliesToMessages.storyboard */; };
+		1504315722C7CC7B009D413F /* RepliesToMessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1504315622C7CC7B009D413F /* RepliesToMessagesVC.swift */; };
 		5D0DCE432297E1A000D7846C /* GetTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DCE422297E1A000D7846C /* GetTokenRequest.swift */; };
 		5D0DCE472297E2B900D7846C /* ErrorJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DCE462297E2B900D7846C /* ErrorJSON.swift */; };
 		5D0DCE4922982E4600D7846C /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DCE4822982E4600D7846C /* Singleton.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1504315422C7CC6B009D413F /* RepliesToMessages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RepliesToMessages.storyboard; sourceTree = "<group>"; };
+		1504315622C7CC7B009D413F /* RepliesToMessagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepliesToMessagesVC.swift; sourceTree = "<group>"; };
 		5D0DCE422297E1A000D7846C /* GetTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTokenRequest.swift; sourceTree = "<group>"; };
 		5D0DCE462297E2B900D7846C /* ErrorJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorJSON.swift; sourceTree = "<group>"; };
 		5D0DCE4822982E4600D7846C /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 				5D1D1FEC22B7A82C001FE715 /* CreateNewTopicViewController.swift */,
 				EFA16AF622BF98BF0059AA96 /* MyTopics.storyboard */,
 				EFA16AFA22BF99E50059AA96 /* MyTopicsViewController.swift */,
+				1504315422C7CC6B009D413F /* RepliesToMessages.storyboard */,
+				1504315622C7CC7B009D413F /* RepliesToMessagesVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -255,6 +261,7 @@
 				EFA16AF722BF98BF0059AA96 /* MyTopics.storyboard in Resources */,
 				EFF974B822944CF0006EE8C6 /* Assets.xcassets in Resources */,
 				EFF974B622944CF0006EE8C6 /* Main.storyboard in Resources */,
+				1504315522C7CC6B009D413F /* RepliesToMessages.storyboard in Resources */,
 				EF8B1CF422B548A9006200C8 /* FullTopicStoryboard.storyboard in Resources */,
 				5D1D1FEB22B7A7F3001FE715 /* CreateNewTopic.storyboard in Resources */,
 				EFE69AF62295A9270012204C /* WebViewDisplay.storyboard in Resources */,
@@ -289,6 +296,7 @@
 				5D0DCE4922982E4600D7846C /* Singleton.swift in Sources */,
 				5D1D1FEF22B7CE3D001FE715 /* TopicPostJSON.swift in Sources */,
 				5D0DCE432297E1A000D7846C /* GetTokenRequest.swift in Sources */,
+				1504315722C7CC7B009D413F /* RepliesToMessagesVC.swift in Sources */,
 				EFE69AF82295AAFF0012204C /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

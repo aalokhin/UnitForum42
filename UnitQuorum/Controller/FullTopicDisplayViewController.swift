@@ -174,6 +174,22 @@ extension FullTopicDisplayViewController {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(indexPath)")
+        
+        let storyboard = UIStoryboard.init(name: "RepliesToMessages", bundle: nil)
+        
+        let vc = storyboard.instantiateViewController(withIdentifier : "RepliesToMessagesVC") as! RepliesToMessagesVC
+        
+        //vc.message = messages[indexPath.row]
+        vc.replies =  messages[indexPath.row].replies!
+        vc.messageText = messages[indexPath.row].content
+
+//        vc.topicID = self.topics[indexPath.row].id
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+   
     
 }
 /*

@@ -39,31 +39,19 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dli-hG-Id6">
-                                        <rect key="frame" x="16" y="320" width="343" height="320"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dli-hG-Id6">
+                                        <rect key="frame" x="17" y="320" width="342" height="238"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="320" id="IUr-b3-U4O"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessagesCell" rowHeight="113" id="5O5-LW-oeG" customClass="MessageCell" customModule="UnitQuorum" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="343" height="113"/>
+                                                <rect key="frame" x="0.0" y="28" width="342" height="113"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5O5-LW-oeG" id="iNH-2O-uZl">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="112.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="112.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iqt-O8-UmE">
-                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="112.5"/>
-                                                            <state key="normal" title="View Replies"/>
-                                                        </button>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="Iqt-O8-UmE" firstAttribute="leading" secondItem="iNH-2O-uZl" secondAttribute="leading" id="Khd-tt-dNU"/>
-                                                        <constraint firstItem="Iqt-O8-UmE" firstAttribute="top" secondItem="iNH-2O-uZl" secondAttribute="top" id="SQQ-Lx-3QP"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Iqt-O8-UmE" secondAttribute="trailing" id="eZP-bO-KXQ"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Iqt-O8-UmE" secondAttribute="bottom" id="jUD-x2-gvu"/>
-                                                    </constraints>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                         </prototypes>
@@ -73,7 +61,7 @@
                                         </connections>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4o-m4-rzL">
-                                        <rect key="frame" x="238" y="28" width="121" height="21"/>
+                                        <rect key="frame" x="237" y="28" width="121" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="121" id="VOi-vo-5Cy"/>
                                         </constraints>
