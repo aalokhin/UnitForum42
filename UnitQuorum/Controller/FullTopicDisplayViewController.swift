@@ -12,16 +12,18 @@ import WebKit
 
 
 
-class FullTopicDisplayViewController: UIViewController  {
+class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
    // var topic : TopicJSON
     var topicID : Int = -1
     var messages : [MessageJSON] = []
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loginLbl: UILabel!
     
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var topicTextLbl: UILabel!
+    
     
     
     
@@ -111,11 +113,17 @@ class FullTopicDisplayViewController: UIViewController  {
 //            print("msg cont: \(msg.content)")
 //            print("Author name: \(msg.author.login)")
         }
-        print("total number of messages  in topic ===========> \(messages.count)")
         
-        if (!messages.isEmpty){
-        //loginLbl.text = messages[]
+        print("total number of messages  in topic ===========> \(messages.count)")
+//        if (!messages.isEmpty){
+//            //loginLbl.text = messages[]
+//        }
+//
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
+        
+        
         
 //        DispatchQueue.main.async {
 //            self.reloadData()
@@ -127,3 +135,45 @@ class FullTopicDisplayViewController: UIViewController  {
     
 }
 
+extension FullTopicDisplayViewController {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return messages.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessagesCell", for: indexPath)
+        cell.backgroundColor = .red
+        
+        let message = messages[indexPath.row]
+        cell.textLabel?.text = message.content
+        
+        
+        
+//        let topic = topics[indexPath.row]
+//        cell.authorLbl.text = topic.author.login
+//        cell.dateLbl.text = topic.created_at.toDate()?.toString()
+//        cell.topicLbl.text = topic.name
+//        cell.designSelf()
+        //cell.activityIndicator.startAnimating()
+        return cell
+    }
+    
+    
+}
+/*
+
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTopicCell
+    let topic = topics[indexPath.row]
+    cell.authorLbl.text = topic.author.login
+    cell.dateLbl.text = topic.created_at.toDate()?.toString()
+    cell.topicLbl.text = topic.name
+    cell.designSelf()
+    //cell.activityIndicator.startAnimating()
+    return cell
+}
+*/

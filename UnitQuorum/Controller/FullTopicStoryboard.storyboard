@@ -45,6 +45,20 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="320" id="IUr-b3-U4O"/>
                                         </constraints>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessagesCell" id="5O5-LW-oeG">
+                                                <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5O5-LW-oeG" id="iNH-2O-uZl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="fPY-b0-V1q" id="3ji-xz-fOj"/>
+                                            <outlet property="delegate" destination="fPY-b0-V1q" id="mMG-LX-hmo"/>
+                                        </connections>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4o-m4-rzL">
                                         <rect key="frame" x="238" y="28" width="121" height="21"/>
@@ -87,6 +101,7 @@
                     <connections>
                         <outlet property="dateLbl" destination="l4o-m4-rzL" id="mHV-Mi-cOJ"/>
                         <outlet property="loginLbl" destination="uYE-em-jHR" id="RLg-qZ-64D"/>
+                        <outlet property="tableView" destination="Dli-hG-Id6" id="kqH-eo-b65"/>
                         <outlet property="topicTextLbl" destination="JbG-F1-RMh" id="KL5-l3-qXg"/>
                     </connections>
                 </viewController>
