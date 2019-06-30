@@ -97,7 +97,7 @@ class CreateNewTopicViewController : UIViewController, UITextFieldDelegate {
             }
             session.resume()
     }
-    
+//***************************************************** here ************************************
     func sendUpdatedTopicToServer(topic : TopicPostJSON){
         let jsonEncoder = JSONEncoder()
         guard let jsonData = try? jsonEncoder.encode(topic) else {
