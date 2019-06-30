@@ -32,9 +32,6 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
     var topicID : Int = -1
     var messages : [MessageJSON] = []
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var loginLbl: UILabel!
-    @IBOutlet weak var dateLbl: UILabel!
-    @IBOutlet weak var topicTextLbl: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,19 +69,22 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
         }
         for msg in m
         {
-            if(msg.is_root == true)
-            {
-                DispatchQueue.main.async {
-                    self.loginLbl.text = msg.author.login
-                    self.dateLbl.text = msg.created_at.toDate()?.toString()
-                    self.topicTextLbl.text = msg.content
-                    self.loginLbl.sizeToFit()
-                    self.dateLbl.sizeToFit()
-                    self.topicTextLbl.sizeToFit()
-                }
-            } else {
-                messages.append(msg)
-            }
+//            DispatchQueue.main.async {
+//                self.loginLbl.text = msg.author.login
+//                self.dateLbl.text = msg.created_at.toDate()?.toString()
+//                self.topicTextLbl.text = msg.content
+//                self.loginLbl.sizeToFit()
+//                self.dateLbl.sizeToFit()
+//                self.topicTextLbl.sizeToFit()
+//            }
+//            if(msg.is_root == true)
+//            {
+//
+//            }
+            messages.append(msg)
+//            else {
+//                messages.append(msg)
+//            }
         }
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -139,7 +139,7 @@ extension FullTopicDisplayViewController {
         cell?.backgroundColor = .red
         let message = messages[indexPath.row]
         cell?.contMsgLbl.text = message.content
-        cell?.dateMsgLbl.text = message.created_at
+        cell?.dateMsgLbl.text = message.created_at.toDate()?.toString()
         cell?.xolginMsgLbl.text = message.author.login
         cell?.replNbrLbl.text = "Replies: " + (message.replies?.count.toString())!
         return cell!
