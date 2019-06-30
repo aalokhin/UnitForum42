@@ -49,13 +49,7 @@ class LoginViewController: UIViewController {
  
  
 
-    @IBAction func webLoginButtonTapped(_ sender: UIButton) {
-        let vc = getViewController() as! WebViewController
-        vc.link = "https://profile.intra.42.fr"
-        self.navigationController?.pushViewController(vc, animated: true)
-  
-    }
-    
+
     
     @IBAction func plainLoginButtonTapped(_ sender: Any) {
         
@@ -149,14 +143,7 @@ class LoginViewController: UIViewController {
         return vc
     }
     
-    func getViewController() -> UIViewController
-    {
-        let storyboard = UIStoryboard.init(name: "WebViewDisplay", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier : "WebViewController") as! WebViewController
-        print("vc created")
-        return vc
-    }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

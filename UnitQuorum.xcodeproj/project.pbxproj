@@ -32,8 +32,6 @@
 		EFD61BCA22A2B8E300A62180 /* TopicJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD61BC922A2B8E300A62180 /* TopicJSON.swift */; };
 		EFE177E222A27E10004649CD /* TokenJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE177E122A27E10004649CD /* TokenJSON.swift */; };
 		EFE69AF42295A5720012204C /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE69AF32295A5720012204C /* Client.swift */; };
-		EFE69AF62295A9270012204C /* WebViewDisplay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFE69AF52295A9270012204C /* WebViewDisplay.storyboard */; };
-		EFE69AF82295AAFF0012204C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE69AF72295AAFF0012204C /* WebViewController.swift */; };
 		EFEE549522C77A6500C06B20 /* PostMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEE549422C77A6500C06B20 /* PostMessage.swift */; };
 		EFF974B122944CF0006EE8C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF974B022944CF0006EE8C6 /* AppDelegate.swift */; };
 		EFF974B622944CF0006EE8C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFF974B422944CF0006EE8C6 /* Main.storyboard */; };
@@ -67,8 +65,6 @@
 		EFD61BC922A2B8E300A62180 /* TopicJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicJSON.swift; sourceTree = "<group>"; };
 		EFE177E122A27E10004649CD /* TokenJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenJSON.swift; sourceTree = "<group>"; };
 		EFE69AF32295A5720012204C /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		EFE69AF52295A9270012204C /* WebViewDisplay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebViewDisplay.storyboard; sourceTree = "<group>"; };
-		EFE69AF72295AAFF0012204C /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		EFEE549422C77A6500C06B20 /* PostMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMessage.swift; sourceTree = "<group>"; };
 		EFF974AD22944CF0006EE8C6 /* UnitQuorum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitQuorum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF974B022944CF0006EE8C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,8 +107,6 @@
 		5D1960BE2295608F00964AF0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				EFE69AF52295A9270012204C /* WebViewDisplay.storyboard */,
-				EFE69AF72295AAFF0012204C /* WebViewController.swift */,
 				5D1960C22295610400964AF0 /* LoginViewController.swift */,
 				EF533DA222C7B0CA00DBC517 /* ListTopics.storyboard */,
 				EF533DA422C7B11800DBC517 /* ListTopicsVC.swift */,
@@ -253,7 +247,6 @@
 				1504315522C7CC6B009D413F /* RepliesToMessages.storyboard in Resources */,
 				EF8B1CF422B548A9006200C8 /* FullTopicStoryboard.storyboard in Resources */,
 				5D1D1FEB22B7A7F3001FE715 /* CreateNewTopic.storyboard in Resources */,
-				EFE69AF62295A9270012204C /* WebViewDisplay.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +278,6 @@
 				5D1D1FEF22B7CE3D001FE715 /* TopicPostJSON.swift in Sources */,
 				5D0DCE432297E1A000D7846C /* GetTokenRequest.swift in Sources */,
 				1504315722C7CC7B009D413F /* RepliesToMessagesVC.swift in Sources */,
-				EFE69AF82295AAFF0012204C /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
