@@ -13,10 +13,6 @@ class RepliesToMessagesVC : UIViewController, UITableViewDataSource, UITableView
     
    var replies : [MessageJSON] = []
    var messageText = ""
-       // : MessageJSON = MessageJSON()
-    //@synthesize message = _message;
-    
-    //lazy var message : MessageJSON
     
     override func viewDidLoad() {
        
@@ -26,24 +22,21 @@ class RepliesToMessagesVC : UIViewController, UITableViewDataSource, UITableView
             for one in replies{
                 print(one.content)
             }
-      
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+          }
     
 }
 
 extension RepliesToMessagesVC {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3
+        return replies.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReplyCell", for: indexPath)
-        
+        cell.textLabel?.text = replies[indexPath.row].content
         cell.backgroundColor = .blue
-   
         return cell
     }
     

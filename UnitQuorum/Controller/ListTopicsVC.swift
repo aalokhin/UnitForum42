@@ -19,7 +19,7 @@ class ListTopicsVC : UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
        self.navBar.isHidden = false
-    self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
 
         //        print(Client.sharedInstance.myLogin)
         //        print(Client.sharedInstance.myId)
@@ -55,7 +55,7 @@ class ListTopicsVC : UIViewController, UITableViewDelegate, UITableViewDataSourc
         // print("*******************************************  DEBUG  *********************************************************")
         
         guard let t = try? decoder.decode([TopicJSON].self, from: d) else {
-            //self.callErrrorAndGetBackToLoginController(message: "Topic failed to be decoded!")
+            self.callErrrorAndGetBackToLoginController(message: "Topic failed to be decoded!")
             return
         }
         for topic in t
@@ -93,59 +93,7 @@ class ListTopicsVC : UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
-    /*
-    @IBAction func CreateButtontapped(_ sender: UIBarButtonItem) {
-        print("create button tapped")
-        let vc = openCreateTopicViewController() as!  CreateNewTopicViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    
-    @IBAction func MyTopicsButtonTapped(_ sender: UIBarButtonItem) {
-        
-        print("Opened my Topics")
-        let vc = openMyTopicsViewController() as! MyTopicsViewController
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func LogOutButtonTapped(_ sender: UIBarButtonItem) {
-        print("Log Out Button Tapped")
-        Client.sharedInstance.token = ""
-        Client.sharedInstance.isSignedIn = false
-        Client.sharedInstance.myId = 0
-        Client.sharedInstance.myLogin = ""
-        navigationController?.viewControllers.forEach { ($0 as? LoginViewController)?.viewDidLoad()}
-        navigationController?.popViewController(animated: true)
-    }
-    
-  */
-    
 }
-
-
-//extension ListTopicsVC {
-//
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 2
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-//        cell.backgroundColor = .red
-//        return cell
-//    }
-//
-//
-//
-//
-//}
-
-
-
 
 extension ListTopicsVC {
     

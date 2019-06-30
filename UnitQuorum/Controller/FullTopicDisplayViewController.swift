@@ -39,7 +39,7 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         print("hello from dispaly topic")
-        print("topic ID \(topicID)")
+        //print("topic ID \(topicID)")
         //print(topic.author.login)
         //print(topic.name)
         getMessages()
@@ -53,7 +53,8 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
         request.setValue("Bearer " + Client.sharedInstance.token, forHTTPHeaderField: "Authorization")
         let session = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
             guard let _ = response,  let data = data else {
-                print("response received")
+                print("response not received")
+                self.callErrorWithCustomMessage(message: "No response or data received")
                 return
             }
             self.parseMessages(d : data)
@@ -81,11 +82,10 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
                     self.dateLbl.sizeToFit()
                     self.topicTextLbl.sizeToFit()
                 }
+            } else {
+                messages.append(msg)
             }
-            messages.append(msg)
-            //print("is it a main topic?? \(msg.is_root)")
         }
-        //print("total number of messages  in topic ===========> \(messages.count)")
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -101,15 +101,16 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
             responseTextField.text = nil
             let responseToMessage : String = text.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
             let sendResponseURL = "https://api.intra.42.fr/v2/topics/\(topicID)/messages?message[author_id]=\(Client.sharedInstance.myId)&message[content]=\(responseToMessage)"
-            print(sendResponseURL)
+            //print(sendResponseURL)
             let urlSend = URL(string : sendResponseURL)
             var request = URLRequest(url : urlSend!)
             request.setValue("Bearer \(Client.sharedInstance.token)", forHTTPHeaderField: "Authorization")
             request.httpMethod = "POST"
-            print(request)
+            //print(request)
             let session = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
                 guard let _ = response, let _ = data else {
-                    print("no response / data received")
+                    //print("no response / data received")
+                    self.callErrorWithCustomMessage(message: "no response / data received")
                     return
                 }
                 DispatchQueue.main.async {
@@ -118,17 +119,14 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
             }
             session.resume()
         } else {
-            print("can't send empty response")
+            //print("can't send empty response")
             callErrorWithCustomMessage(message: "can't send empty response")
         }
     }
-    
-    
-    
+ 
 }
 
 extension FullTopicDisplayViewController {
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
@@ -169,26 +167,14 @@ extension FullTopicDisplayViewController {
                  //DELETE /v2/messages/:id
                 let task = URLSession.shared.dataTask(with: request as URLRequest) {
                     (data, response, error) in
-                    do {
-                        
-                        // what happens if error is not nil?
-                        // That means something went wrong.
-                        // Make sure there really is some data
-                        if let data = data {
-                            let response = try JSONSerialization.jsonObject(with: data, options: [])
-                            print(response)
-                            DispatchQueue.main.async {
-                                self.messages.remove(at: indexPath.row)
-                                tableView.deleteRows(at: [indexPath], with: .automatic)
-                                tableView.reloadData()
-                            }
-                            //completion(response)
-                        }
-                        else {
-                            // Data is nil.
-                        }
-                    } catch let error as NSError {
-                        print("json error: \(error.localizedDescription)")
+                    guard let _ = data, let _ = response else {
+                        self.callErrorWithCustomMessage(message: "Error deleting message")
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        self.messages.remove(at: indexPath.row)
+                        tableView.deleteRows(at: [indexPath], with: .automatic)
+                        tableView.reloadData()
                     }
                 }
                 task.resume()
@@ -209,13 +195,11 @@ extension FullTopicDisplayViewController {
     }
 }
 
-
-
 extension FullTopicDisplayViewController : UITextFieldDelegate{
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("here textFieldShouldReturn")
+        print("here textFieldShouldReturn===================================>??? Are we even here ")
         textField.text = nil
         textField.resignFirstResponder()
         return true
