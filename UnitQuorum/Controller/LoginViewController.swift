@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
         }
        else
         {
-            
+        
             webLoginButton.isHidden = true
             passwordTextField.isHidden = true
             plainLoginButton.isHidden = true

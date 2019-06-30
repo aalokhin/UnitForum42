@@ -32,6 +32,5 @@ class MeJSON:  Decodable {
         self.lastName = (try? values.decode(String.self, forKey: .lastName))
         self.url = (try? values.decode(String.self, forKey: .url))
         self.displayname = (try? values.decode(String.self, forKey: .displayname))
-       // self.languagesUsers = (try? values.decode([LanguagesUser].self, forKey: .languagesUsers))
     }
 }

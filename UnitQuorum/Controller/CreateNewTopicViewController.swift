@@ -74,7 +74,12 @@ class CreateNewTopicViewController : UIViewController, UITextFieldDelegate {
             {
                 let topicRaw = TopicName(name : topicName.text!)
                 let topic = TopicUpdJSON(topic : topicRaw)
+               
+                let messageRaw = MessageToSend(content : topicText.text)
+                let message = PostMessage(message : messageRaw)
+                sendUpdatedMessageToServer(msg: message)
                 sendUpdatedTopicToServer(topic : topic)
+                
                 self.navigationController?.popViewController(animated: true)
                 
                 
@@ -108,10 +113,11 @@ class CreateNewTopicViewController : UIViewController, UITextFieldDelegate {
     }
 //***/Users/aalokhin/SWIFT_Voga/Rush/UnitQuorum/Base.lproj/Main.storyboard************************************************** here ************************************
     func sendUpdatedTopicToServer(topic : TopicUpdJSON){
-        print("sendUpdatedTopicToServer tappped ")
+        print("sendUpdatedTopicToServer is being processed ")
+        
         let jsonEncoder = JSONEncoder()
         guard let jsonData = try? jsonEncoder.encode(topic) else {
-            callErrorWithCustomMessage(message: "Error posting topic")
+            callErrorWithCustomMessage(message: "Error modifying topic")
             return
         }
         var request = URLRequest(url : URL(string : "https://api.intra.42.fr/v2/topics/\(topicID)")!)
@@ -126,6 +132,30 @@ class CreateNewTopicViewController : UIViewController, UITextFieldDelegate {
             }
         }
         session.resume()
+    }
+    
+    func sendUpdatedMessageToServer(msg : PostMessage){
+        
+        print("trying to post message")
+        let jsonEncoder = JSONEncoder()
+        guard let jsonData = try? jsonEncoder.encode(msg) else {
+            callErrorWithCustomMessage(message: "Error modifying msg")
+            return
+        }
+         var request = URLRequest(url : URL(string : "https://api.intra.42.fr/v2/messages/\(messageId)")!)
+         request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField : "Content-Type")
+        request.setValue("Bearer \(Client.sharedInstance.token)", forHTTPHeaderField: "Authorization")
+        request.httpBody = jsonData
+        let session = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
+            guard let _ = response, let _ = data else {
+                self.callErrorWithCustomMessage(message: "response not  received")
+                return
+            }
+        }
+        session.resume()
+  
+        
     }
 
     

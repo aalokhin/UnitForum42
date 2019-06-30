@@ -10,6 +10,37 @@ import Foundation
 
 
 
+
+class PostMessage : Encodable{
+    let message: MessageToSend
+    
+    init(message : MessageToSend) {
+        self.message = message
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case message = "message"
+    }
+}
+
+
+class MessageToSend : Encodable{
+    
+    
+    let content : String
+    
+    init(content : String) {
+        
+        self.content = content
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case content = "content"
+    }
+    
+}
+
+
 //POST /v2/messages
 //POST "v2/topics/\(topicId)/messages?message[author_id]=\(authorId)&message[content]=\(content)"
 
@@ -60,23 +91,6 @@ import Foundation
  */
 
 
-class PostMessage : Encodable{
-    let message: MessageToSend
-    
-    init(message : MessageToSend) {
-        self.message = message
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case message = "message"
-    }
-}
 
-class MessageToSend : Encodable{
-//    "author_id": "6",
-//    "content": "Hello world",
-//    "messageable_id": "7",
-//    "messageable_type": "Topic"
-    
-    
-}
+
+

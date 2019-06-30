@@ -156,6 +156,7 @@ extension ListTopicsVC {
        // print("\(indexPath)")
         let vc = getViewController() as!  FullTopicDisplayViewController
         vc.topicID = self.topics[indexPath.row].id
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
