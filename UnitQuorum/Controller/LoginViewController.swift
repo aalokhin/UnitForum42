@@ -101,8 +101,8 @@ class LoginViewController: UIViewController {
         let url = urlComps.url!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        print("***************")
-        print(request)
+//        print("***************")
+//        print(request)
        
         DispatchQueue.global().async{
             let task = URLSession.shared.dataTask(with: request) {data, response, error in

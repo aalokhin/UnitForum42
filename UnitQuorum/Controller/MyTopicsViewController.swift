@@ -96,7 +96,7 @@ extension MyTopicsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let topic = myTopics[indexPath.row]
-        cell.textLabel?.text = "\(topic.author.login): \(topic.name) created on \(topic.created_at)\n"
+        cell.textLabel?.text = "\(topic.name) created on \(topic.created_at.toDate()?.toString() ?? "")\n"
         cell.textLabel?.sizeToFit()
         cell.textLabel?.numberOfLines = 0
         return cell
