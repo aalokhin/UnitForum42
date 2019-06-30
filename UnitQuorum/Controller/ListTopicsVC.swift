@@ -144,7 +144,7 @@ extension ListTopicsVC {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTopicCell
         let topic = topics[indexPath.row]
         cell.authorLbl.text = topic.author.login
-        cell.dateLbl.text = topic.created_at.toDate()?.toString()
+        cell.dateLbl.text = topic.created_at//.toDate()?.toString()
         cell.topicLbl.text = topic.name
         cell.designSelf()
         //cell.activityIndicator.startAnimating()
