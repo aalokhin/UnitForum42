@@ -76,7 +76,7 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
             {
                 DispatchQueue.main.async {
                     self.loginLbl.text = msg.author.login
-                    self.dateLbl.text = msg.created_at
+                    self.dateLbl.text = msg.created_at.toDate()?.toString()
                     self.topicTextLbl.text = msg.content
                     self.loginLbl.sizeToFit()
                     self.dateLbl.sizeToFit()
