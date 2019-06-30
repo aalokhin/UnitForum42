@@ -11,6 +11,12 @@
  
  navigationController?.viewControllers.forEach { ($0 as? LoginViewController)?.viewDidLoad()}
  navigationController?.popViewController(animated: true)
+ 
+ 
+ PUT /v2/topics/6.json
+ PUT /v2/messages/87
+ 
+ https://api.intra.42.fr//v2/topics/:id
  */
 
 import Foundation
@@ -24,6 +30,7 @@ class CreateNewTopicViewController : UIViewController, UITextFieldDelegate {
     var topicID = -1
     var existingText = ""
     var existingName = ""
+    var messageId = -1
     
     let publishTopicURL = "https://api.intra.42.fr/v2/topics"
 
@@ -65,10 +72,12 @@ class CreateNewTopicViewController : UIViewController, UITextFieldDelegate {
         {
             if (topicText.text != nil && topicName.text != "")
             {
-                let topicRaw = TopicToSend(name : topicName.text!, content : topicText.text!, kind : "normal", author : Client.sharedInstance.myId)
-                let topic = TopicPostJSON(topic : topicRaw)
+                let topicRaw = TopicName(name : topicName.text!)
+                let topic = TopicUpdJSON(topic : topicRaw)
                 sendUpdatedTopicToServer(topic : topic)
                 self.navigationController?.popViewController(animated: true)
+                
+                
             } else {
                 let alertController = UIAlertController(title: "hey there", message: "Can't save changes. Please make sure all fiesld are filled", preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "We'll do", style: .default, handler: nil)
@@ -97,15 +106,16 @@ class CreateNewTopicViewController : UIViewController, UITextFieldDelegate {
             }
             session.resume()
     }
-//***************************************************** here ************************************
-    func sendUpdatedTopicToServer(topic : TopicPostJSON){
+//***/Users/aalokhin/SWIFT_Voga/Rush/UnitQuorum/Base.lproj/Main.storyboard************************************************** here ************************************
+    func sendUpdatedTopicToServer(topic : TopicUpdJSON){
+        print("sendUpdatedTopicToServer tappped ")
         let jsonEncoder = JSONEncoder()
         guard let jsonData = try? jsonEncoder.encode(topic) else {
             callErrorWithCustomMessage(message: "Error posting topic")
             return
         }
-        var request = URLRequest(url : URL(string : publishTopicURL)!)
-        request.httpMethod = "PATCH"
+        var request = URLRequest(url : URL(string : "https://api.intra.42.fr/v2/topics/\(topicID)")!)
+        request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField : "Content-Type")
         request.setValue("Bearer \(Client.sharedInstance.token)", forHTTPHeaderField: "Authorization")
         request.httpBody = jsonData

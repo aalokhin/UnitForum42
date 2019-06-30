@@ -113,6 +113,8 @@ extension MyTopicsViewController: UITableViewDelegate, UITableViewDataSource {
             vc?.isNew = false
             vc?.existingName = self.myTopics[indexPath.row].name
             vc?.existingText = self.myTopics[indexPath.row].message.content.markdown!
+            vc?.topicID = myTopics[indexPath.row].id
+            vc?.messageId = myTopics[indexPath.row].message.id
 
 
         /*
