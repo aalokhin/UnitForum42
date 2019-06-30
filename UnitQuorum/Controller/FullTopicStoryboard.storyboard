@@ -84,6 +84,7 @@
                                                 <constraint firstItem="viw-Uq-Gzp" firstAttribute="leading" secondItem="2Yu-28-8BD" secondAttribute="trailing" constant="84" id="yIb-Xb-lrT"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.88215721920000001" green="0.95509409469999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="contMsgLbl" destination="9M0-bZ-2LA" id="Fto-29-BRk"/>
                                             <outlet property="dateMsgLbl" destination="JJX-6k-APS" id="7lw-41-7LK"/>
@@ -106,6 +107,7 @@
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your reply here!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N4K-dF-hdC">
                                 <rect key="frame" x="16" y="618" width="266" height="30"/>
+                                <color key="backgroundColor" red="0.88215721920000001" green="0.95509409469999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -132,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7FR-f4-b8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1181.5999999999999" y="-75.112443778110944"/>
+            <point key="canvasLocation" x="-113" y="14"/>
         </scene>
     </scenes>
 </document>

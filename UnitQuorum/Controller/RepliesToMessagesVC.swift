@@ -34,7 +34,8 @@ extension RepliesToMessagesVC {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReplyCell", for: indexPath)
         cell.textLabel?.text = replies[indexPath.row].content
-        cell.backgroundColor = .blue
+        cell.textLabel?.sizeToFit()
+        //cell.backgroundColor = .blue
         return cell
     }
     

@@ -17,22 +17,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Topic's name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rpq-DG-LUM">
-                                <rect key="frame" x="24" y="101" width="328" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Topic's name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rpq-DG-LUM">
+                                <rect key="frame" x="24" y="101" width="327" height="30"/>
+                                <color key="backgroundColor" red="0.88215721920000001" green="0.95509409469999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZkN-Om-huu">
-                                <rect key="frame" x="49" y="151" width="279" height="319"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZkN-Om-huu">
+                                <rect key="frame" x="24" y="151" width="327" height="319"/>
+                                <color key="backgroundColor" red="0.88215721916741408" green="0.95509409471782947" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rpq-DG-LUM" firstAttribute="leading" secondItem="ZkN-Om-huu" secondAttribute="leading" id="Gbx-Af-gVb"/>
+                            <constraint firstItem="rpq-DG-LUM" firstAttribute="trailing" secondItem="ZkN-Om-huu" secondAttribute="trailing" id="GgY-7e-LcV"/>
+                            <constraint firstItem="5ib-uH-WpM" firstAttribute="bottom" secondItem="ZkN-Om-huu" secondAttribute="bottom" constant="197" id="IvP-bd-8pY"/>
+                            <constraint firstItem="rpq-DG-LUM" firstAttribute="top" secondItem="5ib-uH-WpM" secondAttribute="top" constant="37" id="eo0-9T-YfO"/>
+                            <constraint firstItem="rpq-DG-LUM" firstAttribute="leading" secondItem="5ib-uH-WpM" secondAttribute="leading" constant="24" id="fH6-Lo-svy"/>
+                            <constraint firstItem="rpq-DG-LUM" firstAttribute="centerX" secondItem="g21-Hv-Vyt" secondAttribute="centerX" id="jIN-aB-aAo"/>
+                            <constraint firstItem="ZkN-Om-huu" firstAttribute="top" secondItem="rpq-DG-LUM" secondAttribute="bottom" constant="20" id="ugL-jc-Fzq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5ib-uH-WpM"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create Topic" id="utY-Ie-4lu">
@@ -54,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ymH-mc-pGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="522" y="72"/>
+            <point key="canvasLocation" x="520.79999999999995" y="71.514242878560722"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RBQ-Bg-NQx">

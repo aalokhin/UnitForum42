@@ -136,7 +136,7 @@ extension FullTopicDisplayViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessagesCell", for: indexPath) as? MessageCell
-        cell?.backgroundColor = .red
+        //cell?.backgroundColor = .red
         let message = messages[indexPath.row]
         cell?.contMsgLbl.text = message.content
         cell?.dateMsgLbl.text = message.created_at.toDate()?.toString()
