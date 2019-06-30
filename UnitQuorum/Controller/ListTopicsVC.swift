@@ -37,7 +37,7 @@ class ListTopicsVC : UIViewController, UITableViewDelegate, UITableViewDataSourc
         let session = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
             if (response == nil ||  data == nil){
                 print("response not received")
-                //self.callErrorWithCustomMessage(message: "No response for get token request")
+                self.callErrorWithCustomMessage(message: "No response for get token request")
                 return
             }
             self.parseTopic(d : data)
@@ -80,9 +80,9 @@ class ListTopicsVC : UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBAction func MyTopics(_ sender: UIBarButtonItem) {
         print("Opened my Topics")
         let vc = openMyTopicsViewController() as! MyTopicsViewController
-        
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     
     @IBAction func composeTopic(_ sender: UIBarButtonItem) {
         print("create button tapped")
@@ -135,7 +135,7 @@ extension ListTopicsVC {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(topics.count)
+        //print(topics.count)
         return topics.count
         
     }
@@ -151,8 +151,9 @@ extension ListTopicsVC {
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(indexPath)")
+       // print("\(indexPath)")
         let vc = getViewController() as!  FullTopicDisplayViewController
         vc.topicID = self.topics[indexPath.row].id
         self.navigationController?.pushViewController(vc, animated: true)

@@ -40,14 +40,14 @@ class MyTopicsViewController : UIViewController {
                 print("error receiving data/response received")
                 return
             }
-            do {
-                let json =  try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
-                self.parseMyTopic(d : data)
-            }
-            catch {
-                
-            }
+//            do {
+//                let json =  try JSONSerialization.jsonObject(with: data, options: [])
+//                print(json)
+               self.parseMyTopic(d : data)
+//            }
+//            catch {
+//
+//            }
             
         }
         session.resume()
@@ -89,11 +89,10 @@ extension MyTopicsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("numberOfRowsInSection")
+       // print("numberOfRowsInSection")
         return myTopics.count
     }
 
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let topic = myTopics[indexPath.row]
@@ -101,9 +100,33 @@ extension MyTopicsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.sizeToFit()
         cell.textLabel?.numberOfLines = 0
         return cell
-
-        
     }
+    
+//********************************************************************
+
+      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            print("Update topic  button tapped")
+    
+            let storyboard = UIStoryboard.init(name: "CreateNewTopic", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier : "CreateNewTopicViewController") as? CreateNewTopicViewController
+            print("vc created")
+            vc?.isNew = false
+            vc?.existingName = self.myTopics[indexPath.row].name
+            vc?.existingText = self.myTopics[indexPath.row].message.content.markdown!
+
+
+        /*
+         vc.isNew = false
+         vc.topicName.text = self.myTopics[indexPath.row].name
+         vc.topicText.text = self.myTopics[indexPath.row].message.content.markdown?? ""
+ */
+       
+            self.navigationController?.pushViewController(vc!, animated: true)
+
+
+        }
+    
+
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
