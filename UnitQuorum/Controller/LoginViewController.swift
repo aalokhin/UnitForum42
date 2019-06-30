@@ -105,12 +105,14 @@ class LoginViewController: UIViewController {
                 }else if let d = data
                 {
                     self.parseToken(d : d)
-
-                    Client.sharedInstance.isSignedIn = true
-
-                    let vc = self.getTopicsViewController()
-                    
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    DispatchQueue.main.async {
+                        Client.sharedInstance.isSignedIn = true
+                        let vc = self.getTopicsViewController()
+                
+                        self.navigationController?.pushViewController(vc, animated: true)
+                        
+                    }
+                
                 }
                 
             }
@@ -128,8 +130,6 @@ class LoginViewController: UIViewController {
         Client.sharedInstance.setToken(t : t.access_token)
         Client.sharedInstance.isSignedIn = true
         getMe()
-       
-
     }
     
     
