@@ -53,13 +53,15 @@ extension Date{
         let format = "dd/MM/yyyy HH:mm"
         let formatter = DateFormatter()
         formatter.dateFormat = format
-        return formatter.string(from: self)
+        let fun =  formatter.string(from: self)
+        print(fun)
+        return fun
     }
 }
 
 extension String {
     func toDate()-> Date? {
-        let format : String = "E MMM dd HH:mm:ss Z yyyy"
+        let format : String = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
