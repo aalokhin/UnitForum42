@@ -113,7 +113,9 @@ class FullTopicDisplayViewController: UIViewController, UITableViewDataSource, U
                     self.callErrorWithCustomMessage(message: "no response / data received")
                     return
                 }
+
                 DispatchQueue.main.async {
+                    // self.presentOK()
                     self.tableView.reloadData()
                 }
             }
@@ -193,6 +195,17 @@ extension FullTopicDisplayViewController {
         alert.addAction(UIAlertAction(title: "allright, thank you", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+ /*
+    func presentOK(){
+        
+        let alert = UIAlertController(title: "Success", message: "Your response has been successfully sent", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
+            self.tableView.reloadData()
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+ */
 }
 
 extension FullTopicDisplayViewController : UITextFieldDelegate{

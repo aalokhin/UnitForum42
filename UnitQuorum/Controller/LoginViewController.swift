@@ -44,7 +44,6 @@ class LoginViewController: UIViewController {
             print("helolo you are here already ")
             
         }
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
  
@@ -68,16 +67,11 @@ class LoginViewController: UIViewController {
             // handle auth response
             guard error == nil, let successURL = callBack else {
                 print("Some error in login")
+                self.callErrorWithCustomMessage(message: "Log In Error")
                 return
             }
             Client.sharedInstance.isSignedIn = true
- 
             var oauthCode = NSURLComponents(string: (successURL.absoluteString))?.queryItems?.filter({$0.name == "code"}).first
-            
-            // Do what you now that you've got the token, or use the callBack URL
-           // print("here is your token : -----------------")
-           // print(oauthToken ?? "No OAuth Token")
-            
             guard let code = oauthCode?.value else {
                 print("No code received")
                 self.callErrorWithCustomMessage(message : "No code received")
@@ -87,7 +81,6 @@ class LoginViewController: UIViewController {
             self.getToken()
   
         })
-        //Kick it off
         self.authSession?.start()
     }
     
@@ -194,8 +187,6 @@ extension LoginViewController{
                 self.callErrorWithCustomMessage(message: "No data received :c")
                 return
             }
-            
-            print(data)
             do {
                 // print("*******************************************  DEBUG  *********************************************************")
                 //data = "any string".data(using: .utf8)!
@@ -203,24 +194,26 @@ extension LoginViewController{
                 
                 guard let dic : NSDictionary = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary else
                 {
-                    print("no data received")
+//                    print("no data received")
                     self.callErrorWithCustomMessage(message: "Error deserializing your topic. Somthing went wrong")
                     return ;
                 }
                 guard let login = dic.value(forKey: "login"), let myId = dic.value(forKey: "id")
                     else {
-                        print("Couldn't get user's data")
-                        self.callErrorWithCustomMessage(message: "Couldn't get login")
+//                        print("Couldn't get user's data")
+                        self.callErrorWithCustomMessage(message : "Couldn't get user's data")
                         return
                 }
                 
                 Client.sharedInstance.myLogin = login as! String
                 Client.sharedInstance.myId = myId as! Int
-                print("********************")
-                print(Client.sharedInstance.myLogin)
-                print(Client.sharedInstance.myId)
-                print(Client.sharedInstance.token)
-                print("********************")
+               /*
+                    print("********************")
+                    print(Client.sharedInstance.myLogin)
+                    print(Client.sharedInstance.myId)
+                    print(Client.sharedInstance.token)
+                    print("********************")
+                */
             }
             catch (let err) {
                 print("Error i getting user's info")

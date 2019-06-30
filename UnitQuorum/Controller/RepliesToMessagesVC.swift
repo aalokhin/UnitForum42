@@ -18,19 +18,17 @@ class RepliesToMessagesVC : UIViewController, UITableViewDataSource, UITableView
        
         super.viewDidLoad()
         print("Hi from this RepliesToMessagesVC!")
-       print(messageText)
-            for one in replies{
-                print(one.content)
-            }
-          }
+        print(messageText)
+//        for one in replies{
+//            print(one.content)
+//        }
+    }
     
 }
 
 extension RepliesToMessagesVC {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return replies.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

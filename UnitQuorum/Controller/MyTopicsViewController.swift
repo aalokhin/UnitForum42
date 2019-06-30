@@ -85,12 +85,6 @@ extension MyTopicsViewController{
     }
 }
 
-
-
-
-
-
-
 extension MyTopicsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
@@ -135,9 +129,5 @@ extension MyTopicsViewController: UITableViewDelegate, UITableViewDataSource {
             }
             task.resume() 
         }
-    }
-    
-
-    
-    
+    }    
 }
